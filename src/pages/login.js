@@ -1,45 +1,62 @@
-import React from "react";
-import { View, Image, Text, TextInput, StyleSheet } from "react-native";
+import React, {useState} from "react";
+import LoginAlternatives from "../components/LoginAlternatives"
+import styles from "../styles/styles";
+import {
+  View,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform
+} from "react-native";
 import logo from "../assets/logo1x.png";
-export default function login() {
+import goToInfo from "../functions/goToInfo"
+
+export default function login({navigation}) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  async function handleCreate(){
+    console.log(email, password);
+
+    navigation.navigate('createAccount')
+  }
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView enabled={Platform.OS === "ios"} behavior="padding" style={styles.container}>
       <Image source={logo} />
       <View style={styles.form}>
-        <Text style={styles.label}>Email *</Text>
+        <Text style={styles.label}>Email:</Text>
         <TextInput
           style={styles.input}
           placeholder="Digite seu E-mail"
-          placeholderTextColor="#5D5FEF"
+          placeholderTextColor="#b3afaf"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          autoCorrect={false}
+          value={email}
+          onChangeText={setEmail}
         />
+        <Text style={styles.label}>Senha:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite sua senha"
+          placeholderTextColor="#b3afaf"
+          autoCapitalize="none"
+          autoCorrect={false}
+          secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button2} onPress={handleCreate}>
+          <Text style={styles.buttonText}>Cadastre-se</Text>
+        </TouchableOpacity>
+        {/* Login LoginAlternatives */}
+        <LoginAlternatives forgotPassword="Esqueceu a senha?"/>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  form: {
-    alignSelf: "stretch",
-    paddingHorizontal: 30,
-    marginTop: 30,
-  },
-  input: {
-      borderWidth: 1,
-      borderRadius: 3,
-      borderColor:"#5D5FEFcc",
-      paddingHorizontal: 20,
-      fontSize:16,
-      color: "#444",
-      height: 44,
-      marginBottom:20,
-  },
-  label: {
-    fontWeight: "bold",
-    color: "#444",
-    marginBottom: 8,
-  },
-});
