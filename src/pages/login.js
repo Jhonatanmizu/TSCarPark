@@ -12,11 +12,13 @@ import {
   Platform
 } from "react-native";
 import logo from "../assets/logo1x.png";
-import goToInfo from "../functions/goToInfo"
 
 export default function login({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  async function loginHandler(){
+    navigation.navigate('Home')
+  }
   async function handleCreate(){
     console.log(email, password);
 
@@ -48,7 +50,7 @@ export default function login({navigation}) {
           value={password}
           onChangeText={setPassword}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={loginHandler}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button2} onPress={handleCreate}>
