@@ -5,6 +5,7 @@ import accountInfo from "./pages/accountInfo"
 import Home from "./pages/Home"
 import MonthPlans from "./pages/MonthPlans"
 import Relatorio from "./pages/Relatorio";
+import Begin from "./pages/Begin"
 const Routes = createAppContainer(
     createSwitchNavigator({
         login,
@@ -12,7 +13,9 @@ const Routes = createAppContainer(
         accountInfo,
         Home,
         MonthPlans,
-        Relatorio
+        Relatorio,
+        Begin,
+        
     })
     
 )

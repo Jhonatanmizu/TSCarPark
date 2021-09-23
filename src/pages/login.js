@@ -17,7 +17,8 @@ export default function login({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   async function loginHandler(){
-    navigation.navigate('Home')
+    // navigation.navigate('Home')
+    navigation.navigate('Begin')
   }
   async function handleCreate(){
     console.log(email, password);

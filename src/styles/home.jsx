@@ -3,12 +3,22 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 const homeStyle = StyleSheet.create({
     container: {
-        marginTop: 20,
         flex: 1,
         backgroundColor: "#fff",
-        justifyContent: "space-between",
-        alignItems: "center",
     },
+    img:{
+        display: "flex",
+        flexDirection: "row",
+    },
+    Text:{
+        fontWeight: "bold",
+        fontSize: 16,
+        display: "flex",
+        textAlign:'center',
+        alignItems: "center",
+        justifyContent: "center",        
+        flexDirection: "column",
+    }
 })
 
 export default homeStyle;

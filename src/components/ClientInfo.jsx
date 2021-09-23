@@ -5,7 +5,6 @@ import profile from "../assets/profile.jpg"
 export default function Client(props) {
     return (
         <View style={styles.format}>
-            <Icon name="arrow-left" size={25} color="#bd93f9" onPress={props.backTo}/>
             <Image source={profile} style={styles.image}/>
         </View>
     )
